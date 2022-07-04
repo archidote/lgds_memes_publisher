@@ -6,7 +6,8 @@ from select_image import *
 
 load_dotenv()
 
-def main():
+def meme_publisher():
+    
     twitter_auth_keys = {
         "consumer_key"        : os.getenv('consumer_key'),
         "consumer_secret"     : os.getenv('consumer_secret'),
@@ -26,11 +27,11 @@ def main():
 
     sorted_index_of_by_file_ext()
     # Upload image
-    media = api.media_upload("tmp_local_image_meme.jpg")
+    media = api.media_upload("tmp_local_meme.jpg")
 
     # Post tweet with image
-    tweet = "Hello ! "
-    post_result = api.update_status(status=tweet, media_ids=[media.media_id])
+    tweet = ""
+    api.update_status(status=tweet, media_ids=[media.media_id])
 
-if __name__ == "__main__":
-    main()
+
+meme_publisher()

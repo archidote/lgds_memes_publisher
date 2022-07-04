@@ -7,7 +7,8 @@ from datetime import datetime
 
 load_dotenv()
 
-def main():
+def publisher():
+    
     twitter_auth_keys = {
         "consumer_key"        : os.getenv('consumer_key'),
         "consumer_secret"     : os.getenv('consumer_secret'),
@@ -25,8 +26,8 @@ def main():
             )
     api = tweepy.API(auth)
 
-    tweet = "Bonjour le monde"
-    post_result = api.update_status(status=tweet)
-
-if __name__ == "__main__":
-    main()
+    tweet = "Bonjour le monde :-)"
+    api.update_status(status=tweet)
+   
+    
+publisher()

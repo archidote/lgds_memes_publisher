@@ -18,7 +18,7 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     n = random.randint(0,lenght_of_list-1)
     img_data = requests.get(parent[n]).content
     
-    with open('tmp_local_image_meme.jpg', 'wb') as handler:
+    with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
         return
 
