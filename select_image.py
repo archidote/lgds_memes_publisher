@@ -4,7 +4,8 @@ import random
 from bs4 import BeautifulSoup
 
 
-def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='JPG', params={}):
+def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
+    
     response = requests.get(url, params=params)
     if response.ok:
         response_text = response.text
@@ -20,6 +21,6 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     
     with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
-        return
+        return 0; 
 
 # print (sorted_index_of_by_file_ext())
