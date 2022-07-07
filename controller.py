@@ -1,4 +1,5 @@
 import tweepy
+import sqlite3
 import time 
 import os
 import schedule
@@ -27,3 +28,8 @@ auth.set_access_token(
 ######## Twitter API Auth ##########
 
 api = tweepy.API(auth)
+
+######## Sqlit3 Connexion ###########
+
+sqliteConnection = sqlite3.connect('assets/lgds_publisher.db')
+cursor = sqliteConnection.cursor()
