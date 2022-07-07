@@ -36,4 +36,3 @@ def quote_publisher():
     
     api.update_status(status=tweet)
     
-quote_publisher()

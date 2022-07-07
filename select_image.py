@@ -22,5 +22,3 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
         return 0; 
-
-# print (sorted_index_of_by_file_ext())
