@@ -22,3 +22,11 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
         return 0; 
+
+def meme_from_reddit(): 
+    url = "https://www.reddit.com/r/ProgrammerHumor/new/.json"
+
+    resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
+    data = resp.json() 
+    print (data)
+    
