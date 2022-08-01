@@ -29,10 +29,9 @@ def quote_publisher():
     sqliteConnection.commit()
     
     quote = record[0][1] 
-    source = record[0][2]
+    # source = record[0][2]
     
-    tweet = "“"+quote+"”\nsource :"+ source+""
-    print (tweet)
+    tweet = "“"+quote+"”"
     
     api.update_status(status=tweet)
     

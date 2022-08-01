@@ -3,6 +3,13 @@ import requests
 import random
 from bs4 import BeautifulSoup
 
+def reddit_or_my_own_memes_collection () :
+    
+    r = random.choice([True, False])
+    if r == True :
+        sorted_index_of_by_file_ext() 
+    else : 
+        meme_from_reddit ()
 
 def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
@@ -19,14 +26,21 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     n = random.randint(0,lenght_of_list-1)
     img_data = requests.get(parent[n]).content
     
+    print (parent[n])
+    
     with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
         return 0; 
 
 def meme_from_reddit(): 
-    url = "https://www.reddit.com/r/ProgrammerHumor/new/.json"
+    url = "https://www.reddit.com/r/ProgrammerHumor/.json"
 
     resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
     data = resp.json() 
-    print (data)
+    trendingRedditMeme = data["data"]["children"][0]["data"]["url_overridden_by_dest"]
+    img_data = requests.get(trendingRedditMeme).content
+   
+    with open('tmp_local_meme.jpg', 'wb') as handler:
+        handler.write(img_data)
+        return 0; 
     
