@@ -31,5 +31,5 @@ api = tweepy.API(auth)
 
 ######## Sqlit3 Connexion ###########
 
-sqliteConnection = sqlite3.connect('assets/lgds_publisher.db')
+sqliteConnection = sqlite3.connect('assets/lgds_publisher.db', check_same_thread=False)
 cursor = sqliteConnection.cursor()
