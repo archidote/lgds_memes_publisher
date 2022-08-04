@@ -1,4 +1,3 @@
-from cherrypy import url
 import requests
 import random
 from bs4 import BeautifulSoup
@@ -7,11 +6,13 @@ def reddit_or_my_own_memes_collection () :
     
     r = random.choice([True, False])
     if r == True :
-        sorted_index_of_by_file_ext() 
+        own_memes_base()
+        return r 
     else : 
         meme_from_reddit ()
+        return r
 
-def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
+def own_memes_base(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
     response = requests.get(url, params=params)
     if response.ok:
@@ -30,17 +31,23 @@ def sorted_index_of_by_file_ext(url='https://le-guide-du-secops.fr/lgds_memes_ba
     
     with open('tmp_local_meme.jpg', 'wb') as handler:
         handler.write(img_data)
-        return 0; 
 
 def meme_from_reddit(): 
     url = "https://www.reddit.com/r/ProgrammerHumor/.json"
 
     resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
     data = resp.json() 
-    trendingRedditMeme = data["data"]["children"][0]["data"]["url_overridden_by_dest"]
-    img_data = requests.get(trendingRedditMeme).content
-   
-    with open('tmp_local_meme.jpg', 'wb') as handler:
-        handler.write(img_data)
-        return 0; 
-    
+    if "url_overridden_by_dest" in data["data"]["children"][1]["data"] : # if the post is a meme file, then :
+        trendingRedditMeme = data["data"]["children"][1]["data"]["url_overridden_by_dest"]
+        img_data = requests.get(trendingRedditMeme).content
+        with open('tmp_local_meme.jpg', 'wb') as handler:
+            handler.write(img_data)
+    else : # use my own collection of memes
+        own_memes_base()
+
+def meme_from_reddit_title() : 
+    url = "https://www.reddit.com/r/ProgrammerHumor/.json"
+    resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
+    data = resp.json() 
+    return data["data"]["children"][1]["data"]["title"]
+

@@ -1,19 +1,15 @@
 from controller import * 
 from meme_publisher import * 
 from quote_publisher import * 
-import tweepy
-import time 
 
-# Some important variables which will be used later
 
 def detect_twitter_mention () : 
     
     bot_id = int(api.verify_credentials().id_str)
-    mention_id = 1
-    words = ["/random", "/info"]
+    words = ["/article", "/info", "/meme"]
     message = "If you have any questions, feel free to send us a DM @{}"
     
-    mentions = api.mentions_timeline(since_id=mention_id) # Finding mention tweets
+    mentions = api.mentions_timeline() # Finding mention tweets
 
     i = 0 
     for mention in mentions:

@@ -1,8 +1,6 @@
 import tweepy
 import sqlite3
-import time 
 import os
-import schedule
 from dotenv import load_dotenv
 
 load_dotenv()
