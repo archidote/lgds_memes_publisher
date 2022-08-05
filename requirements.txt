@@ -10,6 +10,6 @@ numpy==1.23.1
 ordereddict==1.1
 praw==7.6.0
 python-dotenv==0.20.0
-requests==2.22.0
+requests
 schedule==1.1.0
 tweepy==4.10.0
