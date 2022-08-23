@@ -1,16 +1,7 @@
 import requests
 import random
+from functions import * 
 from bs4 import BeautifulSoup
-
-def reddit_or_my_own_memes_collection () :
-    
-    r = random.choice([True, False])
-    if r == True :
-        own_memes_base()
-        return r 
-    else : 
-        meme_from_reddit ()
-        return r
 
 def own_memes_base(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
@@ -29,7 +20,7 @@ def own_memes_base(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PN
     
     print (parent[n])
     
-    with open('tmp_local_meme.jpg', 'wb') as handler:
+    with open('tmp_local_meme', 'wb') as handler:
         handler.write(img_data)
 
 def meme_from_reddit(): 
@@ -39,9 +30,14 @@ def meme_from_reddit():
     data = resp.json() 
     if "url_overridden_by_dest" in data["data"]["children"][1]["data"] : # if the post is a meme file, then :
         trendingRedditMeme = data["data"]["children"][1]["data"]["url_overridden_by_dest"]
-        img_data = requests.get(trendingRedditMeme).content
-        with open('tmp_local_meme.jpg', 'wb') as handler:
-            handler.write(img_data)
+        if check_file_extension(trendingRedditMeme) == ".gif" : 
+            print ("meme is a gif from reddit, (incompatible) so I try to use a meme from my own collection")
+            own_memes_base() 
+        else :
+            img_data = requests.get(trendingRedditMeme).content
+            with open('tmp_local_meme', 'wb') as handler:
+                handler.write(img_data)
+                return "meme_from_reddit"
     else : # use my own collection of memes
         own_memes_base()
 

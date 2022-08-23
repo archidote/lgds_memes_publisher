@@ -1,6 +1,6 @@
 import random
 from controller import * 
-from datetime import datetime
+
 
 def quote_publisher():
     
