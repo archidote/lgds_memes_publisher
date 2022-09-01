@@ -13,7 +13,7 @@ def meme_source_selectore_and_publish():
     
     if choice == True :
         print ("LGDS Own meme base")
-        own_memes_base()
+        lgds_memes_base()
         tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday 🤖"
         
     else : 

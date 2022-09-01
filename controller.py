@@ -1,6 +1,8 @@
 import tweepy
 import sqlite3
 import os
+import sys 
+import logging
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -31,3 +33,22 @@ api = tweepy.API(auth)
 
 sqliteConnection = sqlite3.connect('assets/lgds_publisher.db', check_same_thread=False)
 cursor = sqliteConnection.cursor()
+
+
+######## Logging library  ###########
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s | %(levelname)s | %(message)s')
+
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stdout_handler.setFormatter(formatter)
+
+file_handler = logging.FileHandler('logs.log')
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(formatter)
+
+
+logger.addHandler(file_handler)
+logger.addHandler(stdout_handler)

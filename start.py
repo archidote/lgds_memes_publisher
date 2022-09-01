@@ -17,14 +17,16 @@ def send_img_or_quote_auto() :
         schedule.run_pending()
         time.sleep(1)
         
-schedule.every(30).seconds.do(lambda: detect_twitter_mention())
+schedule.every(10).seconds.do(lambda: detect_twitter_mention())
 
 def twitter_bot_fetch_new_mentions() :
     while 1:
         schedule.run_pending()
         time.sleep(1)
+        
+################################################################## Main ###############################################################
 
-x = threading.Thread(target=detect_twitter_mention)
+x = threading.Thread(target=twitter_bot_fetch_new_mentions)
 x.start()
 
 y = threading.Thread(target=send_img_or_quote_auto)

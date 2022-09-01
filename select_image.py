@@ -1,9 +1,10 @@
 import requests
 import random
 from functions import * 
+from controller import *
 from bs4 import BeautifulSoup
 
-def own_memes_base(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
+def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
     response = requests.get(url, params=params)
     if response.ok:
@@ -22,24 +23,27 @@ def own_memes_base(url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PN
     
     with open('tmp_local_meme', 'wb') as handler:
         handler.write(img_data)
+        logging.info('New meme from lgds memes base has been downloaded')
 
 def meme_from_reddit(): 
     url = "https://www.reddit.com/r/ProgrammerHumor/.json"
 
-    resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
+    resp = requests.get(url=url,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36'})
     data = resp.json() 
     if "url_overridden_by_dest" in data["data"]["children"][1]["data"] : # if the post is a meme file, then :
         trendingRedditMeme = data["data"]["children"][1]["data"]["url_overridden_by_dest"]
         if check_file_extension(trendingRedditMeme) == ".gif" : 
             print ("meme is a gif from reddit, (incompatible) so I try to use a meme from my own collection")
-            own_memes_base() 
+            lgds_memes_base() 
         else :
             img_data = requests.get(trendingRedditMeme).content
             with open('tmp_local_meme', 'wb') as handler:
                 handler.write(img_data)
+                logging.info('New meme from Reddit has been downloaded')
                 return "meme_from_reddit"
     else : # use my own collection of memes
-        own_memes_base()
+        lgds_memes_base()
+        logging.info('Reddit top post isn\'t a meme, I will use the lgds_meme_base')
 
 def meme_from_reddit_title() : 
     url = "https://www.reddit.com/r/ProgrammerHumor/.json"

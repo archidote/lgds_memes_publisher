@@ -6,9 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# Local meme image 
-tmp_local_meme.jpg
-
 # Distribution / packaging
 .Python
 build/
@@ -39,6 +36,10 @@ pyvenv.cfg
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+
+# lgds_publisher 
+tmp_local_meme.jpg
+logs.log
 
 # Installer logs
 pip-log.txt
