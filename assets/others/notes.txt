@@ -1,0 +1,3 @@
+img > 3mb are rejeted by tweepy. 
+
+for git or video please see : https://docs.tweepy.org/en/stable/faq.html#why-am-i-encountering-issues-when-attempting-to-upload-gifs-or-videos
