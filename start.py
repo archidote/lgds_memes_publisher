@@ -9,7 +9,7 @@ from assets.bot_reply import detect_twitter_mention
 schedule.every().days.at("07:30").do(lambda: meme_source_selectore_and_publish())
 schedule.every(2).days.at("18:00").do(lambda: quote_publisher())
 schedule.every(20).seconds.do(lambda: detect_twitter_mention())
-schedule.every(1).minutes.do(lambda: bot_retweet())
+schedule.every(12).hours.do(lambda: bot_retweet())
 
 # schedule.every(5).seconds.do(lambda: meme_source_selectore_and_publish())
 # schedule.every(5).seconds.do(lambda: quote_publisher())
