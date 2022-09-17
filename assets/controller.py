@@ -4,6 +4,12 @@ import os
 import sys 
 import logging
 from dotenv import load_dotenv
+from random import randrange
+import random
+import schedule 
+import time 
+import mimetypes
+import requests
 
 load_dotenv()
 
@@ -55,4 +61,4 @@ logger.addHandler(stdout_handler)
 
 ######### Bot end message #############
 
-bot_end_message = "\n\n From LGDS bot 🤖 with ❤️"
+bot_end_message = "\n\n From LGDS bot 🤖 with ❤️ \n"

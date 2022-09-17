@@ -32,7 +32,9 @@ jobs:
           if_key_exists: ignore
       - name : Pull
         run : | 
-          ssh user@x.x.x.x ''
+          ssh user@x.x.x.x '/usr/bin/screen -X -S lgds_publisher quit'
           ssh user@x.x.x.x '
           cd /home/user/lgds_publisher
-          /usr/bin/git pull origin main'
+          source /home/user/lgds_publisher/bin/activate
+          /usr/bin/git pull origin main
+          /usr/bin/screen -S lgds_publisher -d -m /usr/bin/python3 /home/user/lgds_publisher/start.py'

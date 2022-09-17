@@ -21,7 +21,7 @@ def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='
     
     print (parent[n])
     
-    with open('assets/tmp_local_meme', 'wb') as handler:
+    with open('assets/tmp_local_meme.JPG', 'wb') as handler:
         handler.write(img_data)
         logging.info('New meme from lgds memes base has been downloaded')
 
@@ -37,7 +37,7 @@ def meme_from_reddit():
             lgds_memes_base() 
         else :
             img_data = requests.get(trendingRedditMeme).content
-            with open('assets/tmp_local_meme', 'wb') as handler:
+            with open('assets/tmp_local_meme.JPG', 'wb') as handler:
                 handler.write(img_data)
                 logging.info('New meme from Reddit has been downloaded')
                 return "meme_from_reddit"

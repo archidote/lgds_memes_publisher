@@ -16,35 +16,37 @@ def detect_twitter_mention () :
     i = 0 
     
     for mention in mentions:
-        print (mention.text)
-        print (mention.id)
+    
         with open('assets/last_tweet_mention_id') as f:
             previous_tweet_id = f.readlines()
             print (previous_tweet_id[0])
                    
         if previous_tweet_id[0] != str(mention.id) : # compare str to str. otherwise python cannot find any != between the two value 
             if mention.in_reply_to_status_id is None and mention.author.id != bot_id:
+                if (mention.favorited) != True : # If the tweet has been already favorited, then : 
+                    api.create_favorite(mention.id)
+                    logging.info('tweet '+str(mention.id)+' was favorited')
                 for word in words : 
                     if word[0] in mention.text :
                         try:
                             if word[0] == "/meme" : 
                                 message = word[1]
-                                media = api.media_upload("assets/tmp_local_meme") 
+                                meme_source_selectore_and_publish()
+                                media = api.media_upload("assets/tmp_local_meme.JPG") 
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
-                            else : 
-                                print("Attempting to reply...")
-                                print (mention.text)
-                                print (word[1])
+                                logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
+                            else : # /info /article 
                                 message = word[1]
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
-                                print("Successfully replied :)")
-                                
-                            with open('assets/last_tweet_mention_id', 'w') as f:
-                                f.write(str(mention.id))
+                                logging.info('action '+word[0]+' was published in the reply of the following tweet : '+str(mention.id))
                         except Exception as exc:
                             print(exc)
+                            
+                with open('assets/last_tweet_mention_id', 'w') as f:
+                    f.write(str(mention.id))
+                    logging.info(str(mention.id)+' has been written to the file assets/last_tweet_mention_id')
         else : 
-            print ("W: Same previous tweet id, I can't reply the same things two times to a user !")
+            logging.info('W: Same previous tweet id ('+str(mention.id)+'), I can\'t reply twice to the same tweet"')
                 
         i = i + 1 
         if i == 1 : 

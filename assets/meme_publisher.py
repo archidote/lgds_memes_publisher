@@ -9,22 +9,22 @@ def meme_source_selectore_and_publish():
     random_emoji = random.randint(0, len(emojis) - 1)
     random_sentence = random.randint(0, len(sentences) - 1)   
         
-    choice = random.choice([True, False])
+    choice = randrange(5) 
     
-    if choice == True :
-        print ("LGDS Own meme base")
+    if(choice <= 2) :
+        logging.info("A new meme has been downloaded from le-guide-du-secops.fr/lgds_meme_base")
         lgds_memes_base()
-        tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday 🤖"
+        tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message+" Source : LGDS memes base 🗃️"
         
     else : 
         res = meme_from_reddit ()
         if res == "meme_from_reddit" : 
-            print ("Reddit")
+            logging.info("A new meme has been downloaded from r/ProgrammerHumor")
             reddit_post_title = meme_from_reddit_title()
-            tweet = "From @Reddit r/ProgrammerHumor \n\nPost title : "+reddit_post_title+bot_end_message
+            tweet = "Source : @Reddit r/ProgrammerHumor \n\nPost title : "+reddit_post_title+bot_end_message
         else : # The Reddit meme is a gif, so I force to use a classic sentence 
-            tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday 🤖"
+            tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message
             
-    media = api.media_upload("assets/tmp_local_meme") 
+    media = api.media_upload("assets/tmp_local_meme.JPG") 
     api.update_status(status=tweet, media_ids=[media.media_id])
     

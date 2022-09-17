@@ -38,7 +38,7 @@ pyvenv.cfg
 *.spec
 
 # lgds_publisher 
-assets/tmp_local_meme
+assets/tmp_local_meme.JPG
 assets/logs/logs.log
 
 # Installer logs
