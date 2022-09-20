@@ -15,5 +15,4 @@ def select_random_article () :
     
     return data[0]["link"]
     
-        
-# print(select_random_article())
+    
