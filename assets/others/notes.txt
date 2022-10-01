@@ -9,3 +9,4 @@ TO-DO
 - resoudre le probleme de l'api qui "overload" et qui me quick 
 
 
+- git ignore last_tweet_mention_id
