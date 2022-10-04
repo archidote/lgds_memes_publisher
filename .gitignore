@@ -37,10 +37,6 @@ pyvenv.cfg
 *.manifest
 *.spec
 
-# lgds_publisher 
-assets/tmp_local_meme.JPG
-assets/logs/logs.log
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -136,5 +132,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Tests 
+
+# lgds_publisher 
+assets/tmp_local_meme.JPG
+assets/logs/logs.log
+assets/last_tweet_mention_id
 tests.py
