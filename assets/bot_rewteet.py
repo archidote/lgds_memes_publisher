@@ -23,5 +23,3 @@ def bot_retweet () :
 
         except tweepy.TweepError as e:
             print('Error: ' + e.args[0][0]['message'])
-
-print(bot_retweet())
