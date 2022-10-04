@@ -24,7 +24,7 @@ def meme_source_selectore_and_publish(bot_anwser=False):
                 logging.info("A new meme has been downloaded from r/ProgrammerHumor")
                 reddit_post_title = meme_from_reddit_title()
                 tweet = "Source : @Reddit r/ProgrammerHumor \n\nPost title : "+reddit_post_title+bot_end_message
-            else : # The Reddit meme is a gif, so I force to use a classic sentence 
+            else : # The Reddit meme is a gif, so I force to use a classic sentence and use my own lgds meme base
                 tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message
                 
         media = api.media_upload("assets/tmp_local_meme.JPG") 

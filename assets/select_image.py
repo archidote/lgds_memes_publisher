@@ -4,6 +4,7 @@ from assets.functions import *
 from assets.controller import *
 from bs4 import BeautifulSoup
 
+
 def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
     response = requests.get(url, params=params)
@@ -38,9 +39,12 @@ def meme_from_reddit():
         else :
             img_data = requests.get(trendingRedditMeme).content
             with open('assets/tmp_local_meme.JPG', 'wb') as handler:
-                handler.write(img_data)
-                logging.info('New meme from Reddit has been downloaded')
-                return "meme_from_reddit"
+                if os.path.getsize('assets/tmp_local_meme.JPG') >= 5000000 : 
+                    print ("meme is > to 5 mo. I can't publish it because twitter aonly accept file which have a size < 5mo. I will try to use a meme from my own collection")
+                else : 
+                    handler.write(img_data)
+                    logging.info('New meme from Reddit has been downloaded')
+                    return "meme_from_reddit"
     else : # use my own collection of memes
         lgds_memes_base()
         logging.info('Reddit top post isn\'t a meme, I will use the lgds_meme_base')
@@ -50,4 +54,3 @@ def meme_from_reddit_title() :
     resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
     data = resp.json() 
     return data["data"]["children"][1]["data"]["title"]
-

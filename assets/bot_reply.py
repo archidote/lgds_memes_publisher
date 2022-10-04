@@ -12,7 +12,7 @@ def detect_twitter_mention () :
                 ["/meme", "Hello 😊 @{} voici un meme tiré au sort rien que pour toi"+bot_end_message+""]]
         
 
-        tries = 4
+        tries = 10
         for trie in range(tries): 
             try:
                 #raise Exception("Test, to see if the exception is raised") 
@@ -20,7 +20,9 @@ def detect_twitter_mention () :
                 logging.info('Twitter API fetching for new mention')
             except Exception as exc:                        
                 if trie < tries - 1 :                      
-                    logging.warning("Received invalid answer from Twitter. (Exception : "+str(exc)+") back off for 15 minutes: ")
+                    logging.error("Received invalid answer from Twitter. (Exception : "+str(exc)+") back off for 15 minutes: ")
+                    tweet = "Un problème avec l'API de twitter est en cours, je suis indisponible pour quelques minutes ! 🤖"
+                    api.update_status(status=tweet)
                     time.sleep(60*15) # Wait 15 minutes before the other tries 
                     continue 
                 else : 
@@ -47,14 +49,14 @@ def detect_twitter_mention () :
                                         media = api.media_upload("assets/tmp_local_meme.JPG") 
                                         api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                         logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
-                                        break
                                     else : # /info /article 
                                         message = word[1]
                                         api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                                         logging.info('action '+word[0]+' was published in the reply of the following tweet : '+str(mention.id))
-                                        break
                                 except Exception as exc:
-                                    print (exc)
+                                    oops = "Oops :/ Actuellement, je rencontre quelques difficultés pour exécuter votre demande...Reessayez dans quelques minutes."
+                                    logging.error("Received invalid answer from Twitter. (Exception : "+str(exc)+") back off for 15 minutes: ")
+                                    api.update_status(oops.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
             
                         with open('assets/last_tweet_mention_id', 'w') as f:
                             f.write(str(mention.id))

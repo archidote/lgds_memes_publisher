@@ -10,3 +10,10 @@ TO-DO
 
 
 - git ignore last_tweet_mention_id
+
+- si exception, envoyer un tweet pour dire que le bot n'est plus actif pour 15m 
+
+
+- voir pour enlever les instructions break dans la nested³ loop, afin que le bot puisse gérer plusieurs actions en même temps 
+
+WARNING, cela risque de me faire repérer par l'API twitter et de générer l'erreur 130 Over caapacity ... à voir ou non si on garde cette idée dans le futur.

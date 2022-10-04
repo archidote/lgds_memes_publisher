@@ -34,5 +34,4 @@ def quote_publisher():
     tweet = "“"+quote+"”"+bot_end_message
     
     api.update_status(status=tweet)
-    print (tweet)
     
