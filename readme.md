@@ -4,5 +4,19 @@ python3 -m venv .
 source bin/activate
 python3 -m pip install -r requirements.txt
 sudo apt-get install python3-bs4 # Only if bs4 is not recognize by your IDE after the previous cmd 
-python3 start.py
+```
+
+```
+nano .env
+```
+
+```
+consumer_key=""
+consumer_secret=""
+access_token=""
+access_token_secret=""
+```
+
+```
+python3 start.py 
 ```

@@ -15,7 +15,6 @@ def detect_twitter_mention () :
         tries = 10
         for trie in range(tries): 
             try:
-                #raise Exception("Test, to see if the exception is raised") 
                 mentions = api.mentions_timeline() # Finding mention(s) tweets 
                 logging.info('Twitter API fetching for new mention')
             except Exception as exc:                        
@@ -45,7 +44,7 @@ def detect_twitter_mention () :
                                 try:
                                     if word[0] == "/meme" : 
                                         message = word[1]
-                                        meme_source_selectore_and_publish(bot_anwser=True)
+                                        meme_source_and_publish(bot_anwser=True)
                                         media = api.media_upload("assets/tmp_local_meme.JPG") 
                                         api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                         logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))

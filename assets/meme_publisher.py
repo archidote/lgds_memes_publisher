@@ -2,7 +2,7 @@ from assets.select_image import *
 from assets.controller import * 
 
 
-def meme_source_selectore_and_publish(bot_anwser=False):
+def meme_source_and_publish(bot_anwser=False):
     
     emojis = ['🙂', '😀', '😃', '😆', '😉', '🐦', '😛', '😅']
     sentences = ['Bonjour à tous !', 'Salutations !', 'Hey !', 'Hello', 'Have a good day', 'Passez une bonne journée', 'Hi', 'Une image vaut mille mots - Confucius']
