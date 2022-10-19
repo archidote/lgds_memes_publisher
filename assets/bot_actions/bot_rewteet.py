@@ -1,10 +1,4 @@
-import time
-from unittest import result 
-from assets.articles import select_random_article
 from assets.controller import * 
-from assets.meme_publisher import * 
-from assets.quote_publisher import * 
-
 
 def bot_retweet () : 
     

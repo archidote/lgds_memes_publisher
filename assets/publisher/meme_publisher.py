@@ -1,4 +1,4 @@
-from assets.select_image import * 
+from assets.common_features.select_image import * 
 from assets.controller import * 
 
 
@@ -27,7 +27,7 @@ def meme_source_and_publish(bot_anwser=False):
             else : # The Reddit meme is a gif, so I force to use a classic sentence and use my own lgds meme base
                 tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message
                 
-        media = api.media_upload("assets/tmp_local_meme.JPG") 
+        media = api.media_upload("assets/common_features/tmp_local_meme.JPG") 
         api.update_status(status=tweet, media_ids=[media.media_id])
         
     else : 

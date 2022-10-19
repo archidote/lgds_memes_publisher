@@ -1,8 +1,8 @@
-from assets.articles import select_random_article
+from assets.common_features.articles import select_random_article
 from assets.controller import * 
-from assets.meme_publisher import * 
-from assets.quote_publisher import *
-from assets.whoami import * 
+from assets.publisher.meme_publisher import * 
+from assets.publisher.quote_publisher import *
+from assets.bot_actions.whoami import * 
 
 
 def detect_twitter_mention () : 
@@ -19,7 +19,7 @@ def detect_twitter_mention () :
                     ["/meme", "Hello 😊 @{} voici un meme tiré au sort rien que pour toi"+bot_end_message+""],
                     ["/whoami", "Hello 😊 @{} voici quelques informations à propos de toi :\n"+whoami(mention.author.screen_name)+""+bot_end_message+""]]
         
-            with open('assets/last_tweet_mention_id') as f:
+            with open('assets/bot_actions/last_tweet_mention_id') as f:
                 previous_tweet_id = f.readlines()
                     
             if previous_tweet_id[0] != str(mention.id) : # compare str to str. otherwise python cannot find any != between the two value 
@@ -33,7 +33,7 @@ def detect_twitter_mention () :
                             message = word[1]
                             if word[0] == "/meme" : 
                                 meme_source_and_publish(bot_anwser=True)
-                                media = api.media_upload("assets/tmp_local_meme.JPG") 
+                                media = api.media_upload("assets/common_features/tmp_local_meme.JPG") 
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                 logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
                             elif word[0] == "/whoami": 
@@ -44,9 +44,9 @@ def detect_twitter_mention () :
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                                 logging.info('action '+word[0]+' was published in the reply of the following tweet : '+str(mention.id))
         
-                    with open('assets/last_tweet_mention_id', 'w') as f:
+                    with open('assets/bot_actions/last_tweet_mention_id', 'w') as f:
                         f.write(str(mention.id))
-                        logging.info(str(mention.id)+' has been written to the file assets/last_tweet_mention_id')
+                        logging.info(str(mention.id)+' has been written to the file assets/bot_actions/last_tweet_mention_id')
             else : 
                 logging.info('W: Same previous tweet id ('+str(mention.id)+'), I can\'t reply twice to the same tweet"')
                     
