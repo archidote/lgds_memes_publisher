@@ -1,4 +1,3 @@
-import requests
 import random
 from assets.functions import * 
 from assets.controller import *
@@ -7,7 +6,7 @@ from bs4 import BeautifulSoup
 
 def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
     
-    response = requests.get(url, params=params)
+    response = http_request_session.get(url, params=params)
     if response.ok:
         response_text = response.text
     else:
@@ -18,7 +17,7 @@ def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='
     
     lenght_of_list =  len(parent)
     n = random.randint(0,lenght_of_list-1)
-    img_data = requests.get(parent[n]).content
+    img_data = http_request_session.get(parent[n]).content
     
     print (parent[n])
     
@@ -29,7 +28,7 @@ def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='
 def meme_from_reddit(): 
     url = "https://www.reddit.com/r/ProgrammerHumor/.json"
 
-    resp = requests.get(url=url,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36'})
+    resp = http_request_session.get(url=url,headers = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36'})
     data = resp.json() 
     if "url_overridden_by_dest" in data["data"]["children"][1]["data"] : # if the post is a meme file, then :
         trendingRedditMeme = data["data"]["children"][1]["data"]["url_overridden_by_dest"]
@@ -37,7 +36,7 @@ def meme_from_reddit():
             print ("meme is a gif from reddit, (incompatible) so I try to use a meme from my own collection")
             lgds_memes_base() 
         else :
-            img_data = requests.get(trendingRedditMeme).content
+            img_data = http_request_session.get(trendingRedditMeme).content
             with open('assets/tmp_local_meme.JPG', 'wb') as handler:
                 if os.path.getsize('assets/tmp_local_meme.JPG') >= 5000000 : 
                     print ("meme is > to 5 mo. I can't publish it because twitter aonly accept file which have a size < 5mo. I will try to use a meme from my own collection")
@@ -51,6 +50,6 @@ def meme_from_reddit():
 
 def meme_from_reddit_title() : 
     url = "https://www.reddit.com/r/ProgrammerHumor/.json"
-    resp = requests.get(url=url,headers = {'User-agent': 'lgds_publisher'})
+    resp = http_request_session.get(url=url,headers = {'User-agent': 'lgds_publisher'})
     data = resp.json() 
     return data["data"]["children"][1]["data"]["title"]

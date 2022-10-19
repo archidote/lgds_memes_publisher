@@ -1,3 +1,4 @@
+from urllib import request
 import tweepy
 import sqlite3
 import os
@@ -9,7 +10,8 @@ import random
 import schedule 
 import time 
 import mimetypes
-import requests
+import requests 
+from requests.adapters import HTTPAdapter, Retry
 
 load_dotenv()
 
@@ -59,6 +61,17 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logger.addHandler(stdout_handler)
 
+######### Request Library #############
+
+http_request_session = requests.Session()
+
+retries = Retry(total=10,
+                backoff_factor=1,
+                status_forcelist=[ 500, 502, 503, 504 ])
+
+http_request_session.mount('http://', HTTPAdapter(max_retries=retries))
+
+
 ######### Bot end message #############
 
-bot_end_message = "\n\n From LGDS bot 🤖 with ❤️ \n"
+bot_end_message = "\n\nFrom LGDS bot 🤖 with ❤️ \n"
