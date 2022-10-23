@@ -16,3 +16,5 @@ TO-DO
 - l'article le plus consulté de la semaine api lgds 
 
 Retweet if some one tweet if the hashtage #LGDSecOps 
+
+- Fonction permettant d'énumérer ce que le bot est capable de faire ! 
