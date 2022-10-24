@@ -17,4 +17,4 @@ TO-DO
 
 Retweet if some one tweet if the hashtage #LGDSecOps 
 
-- Fonction permettant d'énumérer ce que le bot est capable de faire ! 
+- Fonction permettant d'énumérer ce que le bot est capable de faire 
