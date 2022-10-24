@@ -32,8 +32,8 @@ jobs:
           if_key_exists: ignore
       - name : Pull
         run : | 
-          ssh -p 4242 user@x.x.x.x '/usr/bin/screen -X -S lgds_publisher quit'
-          ssh -p 4242 user@x.x.x.x '
+          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '/usr/bin/screen -X -S lgds_publisher quit'
+          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
           cd /home/user/lgds_publisher
           /usr/bin/git pull origin main
           /usr/bin/screen -S lgds_publisher -d -m /usr/bin/python3 /home/user/lgds_publisher/start.py'
