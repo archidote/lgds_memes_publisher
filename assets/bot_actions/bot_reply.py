@@ -14,10 +14,12 @@ def detect_twitter_mention () :
         for mention in mentions:
             
             bot_id = int(api.verify_credentials().id_str)
+            
             words = [["/article", "Hello 😊 @{} Voici un article tiré au sort rien que pour toi \n "+select_random_article()+""+bot_end_message], 
                     ["/info", "Hello 😊 @{} Pour toutes informations, envois nous un MP (message privé) 😊"], 
                     ["/meme", "Hello 😊 @{} voici un meme tiré au sort rien que pour toi"+bot_end_message+""],
-                    ["/whoami", "Hello 😊 @{} voici quelques informations à propos de toi :\n"+whoami(mention.author.screen_name)+""+bot_end_message+""]]
+                    ["/whoami", "Hello 😊 @{} voici quelques informations à propos de toi :\n"+whoami(mention.author.screen_name)+""+bot_end_message+""],
+                    ["/hello", "Hey 😊 @{} Voici les actions que je suis capable de réaliser : \n"]]
         
             with open('assets/bot_actions/last_tweet_mention_id') as f:
                 previous_tweet_id = f.readlines()
@@ -36,11 +38,11 @@ def detect_twitter_mention () :
                                 media = api.media_upload("assets/common_features/tmp_local_meme.JPG") 
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                 logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
-                            elif word[0] == "/whoami": 
+                            elif word[0] == "/hello":
                                 print (message)
+                                message += ""+iterate_over_a_the_first_case_of_a_double_list(words)+""+bot_end_message
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
-                                print ("whoami") 
-                            else : # /info /article 
+                            else : # /info /article /whoami
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                                 logging.info('action '+word[0]+' was published in the reply of the following tweet : '+str(mention.id))
         
