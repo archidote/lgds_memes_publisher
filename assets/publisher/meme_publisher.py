@@ -16,7 +16,7 @@ def meme_source_and_publish(bot_anwser=False):
         if(choice <= 2) :
             logging.info("A new meme has been downloaded from le-guide-du-secops.fr/lgds_meme_base")
             lgds_memes_base()
-            tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message+" Source : LGDS memes base 🗃️"
+            tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday \nSource : LGDS memes base 🗃️"+bot_end_message
             
         else : 
             res = meme_from_reddit ()
@@ -25,7 +25,7 @@ def meme_source_and_publish(bot_anwser=False):
                 reddit_post_title = meme_from_reddit_title()
                 tweet = "Source : @Reddit r/ProgrammerHumor \n\nPost title : "+reddit_post_title+bot_end_message
             else : # The Reddit meme is a gif, so I force to use a classic sentence and use my own lgds meme base
-                tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday "+bot_end_message
+                tweet = sentences[random_sentence]+" "+emojis[random_emoji]+" #picoftheday"+bot_end_message
                 
         media = api.media_upload("assets/common_features/tmp_local_meme.JPG") 
         api.update_status(status=tweet, media_ids=[media.media_id])
