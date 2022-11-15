@@ -25,4 +25,9 @@ def start() :
 # ################################################################# Main ###############################################################
 
 if __name__ == "__main__":
-    start()
+    try:
+        start()
+    except Exception as e :
+        logging.error('Fatal error'+str(e)+"")
+    
+    
