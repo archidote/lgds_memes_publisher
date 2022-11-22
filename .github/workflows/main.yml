@@ -32,8 +32,8 @@ jobs:
           if_key_exists: ignore
       - name : Pull
         run : | 
-          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '/usr/bin/screen -X -S lgds_publisher quit'
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
-          cd /home/${{ secrets.USERNAME }}/lgds_publisher
-          /usr/bin/git pull origin main
-          /usr/bin/screen -S lgds_publisher -d -m /usr/bin/python3 /home/${{ secrets.USERNAME }}/lgds_publisher/start.py'
+          tmux kill-session -t twitter_bot_lgds
+          cd /home/${{ secrets.USERNAME }}/twitter_bot_lgds
+          git pull origin main
+          tmux new-session -d -s twitter_bot_lgds 'python3 /home/${{ secrets.USERNAME }}/twitter_bot_lgds/twitter_bot_lgds.py''

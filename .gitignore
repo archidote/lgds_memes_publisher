@@ -137,6 +137,4 @@ dmypy.json
 assets/tmp_local_meme.JPG
 assets/common_features/tmp_local_meme.JPG
 assets/logs/logs.log
-assets/last_tweet_mention_id
-assets/bot_actions/last_tweet_mention_id
 tests.py
