@@ -19,9 +19,6 @@ def start() :
         schedule.run_pending()
         time.sleep(1)
         
-# def end() :
-#     tweet = "🔨 Maintenance du bot en cours... Je reviens vite 🤖"
-#     api.update_status(status=tweet)
 # ################################################################# Main ###############################################################
 
 if __name__ == "__main__":
