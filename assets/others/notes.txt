@@ -1,20 +1,15 @@
 TO-DO
 
 
-- logging system for all actions ! 
+- logging system for all actions ! (50%)
 
 - img > 3mb are rejeted by tweepy. 
     for git or video please see : https://docs.tweepy.org/en/stable/faq.html#why-am-i-encountering-issues-when-attempting-to-upload-gifs-or-videos
-
-- resoudre le probleme de l'api qui "overload" et qui me quick 
-
-
-- git ignore last_tweet_mention_id
 
 - l'article le plus rt de la semaine api twitter
 
 - l'article le plus consulté de la semaine api lgds 
 
-Retweet if some one tweet if the hashtage #LGDSecOps 
+- Retweet if some one tweet if the hashtage #LGDSecOps 
 
-- Fonction permettant d'énumérer ce que le bot est capable de faire 
+- 
