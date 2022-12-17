@@ -12,4 +12,4 @@ TO-DO
 
 - Retweet if some one tweet if the hashtage #LGDSecOps 
 
-- 
+detect if le-guide-du-secops.fr is down or not (send a tweet)
