@@ -139,3 +139,4 @@ assets/common_features/tmp_local_meme.JPG
 assets/logs/logs.log
 tests.py
 tests.json
+assets/bot_actions/last_tweet_mention_id
