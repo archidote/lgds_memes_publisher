@@ -13,7 +13,7 @@ import mimetypes
 import requests 
 from requests.adapters import HTTPAdapter, Retry
 from bs4 import BeautifulSoup
-
+from datetime import datetime
 
 load_dotenv()
 
@@ -77,3 +77,5 @@ http_request_session.mount('http://', HTTPAdapter(max_retries=retries))
 ######### Bot end message #############
 
 bot_end_message = "\n\nFrom LGDS bot 🤖 with ❤️ \n"
+
+twitter_user_account="LeGuideDuSecOps"

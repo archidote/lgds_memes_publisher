@@ -39,7 +39,6 @@ def detect_twitter_mention () :
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                 logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
                             elif word[0] == "/hello":
-                                print (message)
                                 message += ""+iterate_over_a_the_first_case_of_a_double_list(words)+""+bot_end_message
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                             else : # /info /article /whoami
