@@ -36,4 +36,5 @@ jobs:
           tmux kill-session -t twitter_bot_lgds
           cd /home/${{ secrets.USERNAME }}/twitter_bot_lgds
           git pull origin main
-          tmux new-session -d -s twitter_bot_lgds -c '/home/${{ secrets.USERNAME }}/twitter_bot_lgds' 'source activate_virtual_env.sh' '
+          pwd
+          tmux new-session -d -s twitter_bot_lgds 'source activate_virtual_env.sh''
