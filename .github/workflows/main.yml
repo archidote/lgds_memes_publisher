@@ -38,4 +38,4 @@ jobs:
           git pull origin main
           pwd'
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
-          tmux new-session -d -s twitter_bot_lgds -c '/home/${{ secrets.USERNAME }}/twitter_bot_lgds' 'source activate_virtual_env.sh' '
+          tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'python3 twitter_bot_lgds.py' '
