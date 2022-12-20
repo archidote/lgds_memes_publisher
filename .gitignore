@@ -134,8 +134,8 @@ dmypy.json
 
 
 # lgds_publisher 
-assets/tmp_local_meme.JPG
-assets/common_features/tmp_local_meme.JPG
+assets/tmp_local_meme.png
+assets/common_features/tmp_local_meme.png
 assets/logs/logs.log
 tests.py
 tests.json

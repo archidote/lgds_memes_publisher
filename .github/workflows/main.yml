@@ -36,4 +36,4 @@ jobs:
           tmux kill-session -t twitter_bot_lgds
           cd /home/${{ secrets.USERNAME }}/twitter_bot_lgds
           git pull origin main
-          echo 'Due to an unexpected issue from the runner, The bot will automatically be raised up in the next 15min in a python venv by my monitoring script' '
+          echo 'Due to an unexpected issue from the runner, The bot will automatically be raised up in the next 5min in a python venv by my monitoring script' '

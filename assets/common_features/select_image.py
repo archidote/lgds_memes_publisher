@@ -4,7 +4,7 @@ from assets.controller import *
 from bs4 import BeautifulSoup
 
 
-def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='PNG', params={}):
+def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='png', params={}):
     
     response = http_request_session.get(url, params=params)
     if response.ok:
@@ -21,7 +21,7 @@ def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='
     
     print (parent[n])
     
-    with open('assets/common_features/tmp_local_meme.JPG', 'wb') as handler:
+    with open('assets/common_features/tmp_local_meme.png', 'wb') as handler:
         handler.write(img_data)
         logging.info('New meme from lgds memes base has been downloaded')
 
@@ -37,8 +37,8 @@ def meme_from_reddit():
             lgds_memes_base() 
         else :
             img_data = http_request_session.get(trendingRedditMeme).content
-            with open('assets/common_features/tmp_local_meme.JPG', 'wb') as handler:
-                if os.path.getsize('assets/common_features/tmp_local_meme.JPG') >= 5000000 : 
+            with open('assets/common_features/tmp_local_meme.png', 'wb') as handler:
+                if os.path.getsize('assets/common_features/tmp_local_meme.png') >= 5000000 : 
                     print ("meme is > to 5 mo. I can't publish it because twitter aonly accept file which have a size < 5mo. I will try to use a meme from my own collection")
                 else : 
                     handler.write(img_data)
