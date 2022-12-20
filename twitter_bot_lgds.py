@@ -1,8 +1,8 @@
 from assets.controller import * 
 from assets.publisher.meme_publisher import * 
 from assets.publisher.quote_publisher import * 
-from assets.bot_actions.bot_rewteet import * 
-from assets.bot_actions.bot_reply import *
+from assets.bot_actions.rewteet import * 
+from assets.bot_actions.reply import *
 
 ################################################################## Scheduler ###############################################################
 

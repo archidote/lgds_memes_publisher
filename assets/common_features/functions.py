@@ -1,5 +1,5 @@
 from assets.controller import * 
-from assets.bot_actions.bot_rewteet import *
+from assets.bot_actions.most_famous_tweet import *
 def check_file_extension (path) : 
     
     response = requests.get(path)
@@ -23,9 +23,10 @@ def every_1st_day_of_the_month_or_not():
     day_of_month = datetime.now().day
     
     if (day_of_month == 1) :
-        most_retweeted_tweet_of_the_previous_month()
+        logging.info("First day of the month - Calling most_famous_tweet_of_the_previous_month(\"favorite\")...")
+        most_famous_tweet_of_the_previous_month("favorite")    
     elif (day_of_month == 2) :
-        print 
-        # most_fav_tweet_of_the_previous_month()
+        logging.info("First day of the month - Calling most_famous_tweet_of_the_previous_month(\"retweet\")...")
+        most_famous_tweet_of_the_previous_month("retweet")
     else : 
-        logging.info("Today we are not the first day of the month ("+str(day_of_month)+"), so actions planned for 1st day will not be executed.")
+        logging.info("Today we are not the 1st || 2st day of the month ("+str(day_of_month)+"), so no scheduled actions will be executed.")
