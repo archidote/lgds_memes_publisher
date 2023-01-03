@@ -8,7 +8,7 @@ from assets.bot_actions.whoami import *
 def detect_twitter_mention () : 
         
         mentions = api.mentions_timeline() # Finding mention(s) tweets 
-        logging.info('Twitter API fetching for new mention')
+        logging.info('Twitter API fetching for new @mention...')
                       
         i = 0 
         for mention in mentions:
@@ -37,7 +37,7 @@ def detect_twitter_mention () :
                                 meme_source_and_publish(bot_anwser=True)
                                 media = api.media_upload("assets/common_features/tmp_local_meme.png") 
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
-                                logging.info('meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
+                                logging.info('a meme has been fetched and published in the reply of the following tweet : '+str(mention.id))
                             elif word[0] == "/hello":
                                 message += ""+iterate_over_a_the_first_case_of_a_double_list(words)+""+bot_end_message
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)

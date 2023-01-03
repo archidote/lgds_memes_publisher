@@ -1,4 +1,3 @@
-import random
 from assets.common_features.functions import * 
 from assets.controller import *
 from bs4 import BeautifulSoup

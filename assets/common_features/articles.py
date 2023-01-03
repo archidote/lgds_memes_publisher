@@ -1,4 +1,3 @@
-import requests 
 from random import randrange
 from assets.controller import * 
 

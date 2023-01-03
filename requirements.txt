@@ -1,5 +1,5 @@
-beautifulsoup4
-python-dotenv
-requests
-schedule
-tweepy
+beautifulsoup4==4.11.1
+python-dotenv==0.21.0
+requests==2.28.1
+schedule==1.1.0
+tweepy==4.10.0

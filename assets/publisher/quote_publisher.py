@@ -1,6 +1,5 @@
 from assets.controller import * 
 
-
 def quote_publisher():
     
     try: 

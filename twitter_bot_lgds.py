@@ -8,27 +8,23 @@ from assets.bot_actions.reply import *
 
 
 schedule.every().days.at("07:00").do(lambda: meme_source_and_publish())
-schedule.every().days.at("11:32").do(lambda: every_1st_day_of_the_month_or_not())
+schedule.every().days.at("11:32").do(lambda: every_x_day_of_the_month_or_not())
 schedule.every(2).days.at("18:00").do(lambda: quote_publisher())
-schedule.every(15).to(59).seconds.do(lambda: detect_twitter_mention())
+schedule.every(3).seconds.do(lambda: detect_twitter_mention())
 schedule.every(12).hours.do(lambda: bot_retweet())
 
 # schedule.every(5).seconds.do(lambda: meme_source_and_publish())
 # schedule.every(5).seconds.do(lambda: quote_publisher())
 # schedule.every(5).seconds.do(lambda: detect_twitter_mention())
 
-def start() : 
-    logging.info("The bot is starting...")   
-    while 1:
-        schedule.run_pending()
-        time.sleep(1)
-        
 ################################################################## Main ###############################################################
 
 if __name__ == "__main__":
     try:
-        start()
-    except Exception as e :
-        logging.error('Fatal error : '+str(e)+"")
-    
+        while 1:
+            schedule.run_pending()
+            time.sleep(1)
+            signal.signal(signal.SIGINT, detect_control_c_signal_handler)
+    except (RuntimeError, TypeError, NameError, Exception) as e :
+        logging.error("Fatal error : "+e+"")    
     

@@ -1,7 +1,6 @@
 from assets.common_features.select_image import * 
 from assets.controller import * 
 
-
 def meme_source_and_publish(bot_anwser=False):
     
     emojis = ['🙂', '😀', '😃', '😆', '😉', '🐦', '😛', '😅']

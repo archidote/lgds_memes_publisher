@@ -1,19 +1,18 @@
-from urllib import request
-import tweepy
-import sqlite3
-import os
-import sys 
-import logging
-from dotenv import load_dotenv
-from random import randrange
-import random
-import schedule 
-import time 
-import mimetypes
-import requests 
+# import - Dependencies for this file and for the project 
+import tweepy, sqlite3, os, sys, logging, requests 
+
+# "import" - Other dependencies not used directly in this file but by others used by the project 
+import random, schedule, time, mimetypes, signal 
+
+# From - Dependencies for this file and for the project 
 from requests.adapters import HTTPAdapter, Retry
+from dotenv import load_dotenv
+
+# From - Other dependencies not used directly in this file but by others used by the project 
+from urllib import request
 from bs4 import BeautifulSoup
 from datetime import datetime
+from random import randrange
 
 load_dotenv()
 
@@ -74,8 +73,8 @@ retries = Retry(total=10,
 http_request_session.mount('http://', HTTPAdapter(max_retries=retries))
 
 
-######### Bot end message #############
+######### Global var config ###########
 
+bot_name = "twitter_bot_lgds"
 bot_end_message = "\n\nFrom LGDS bot 🤖 with ❤️ \n"
-
 twitter_user_account="LeGuideDuSecOps"
