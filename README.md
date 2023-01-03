@@ -26,7 +26,7 @@ consumer_secret=""
 access_token=""
 access_token_secret=""
 ```
-then, you canstart the bot : 
+then, you can start the bot : 
 ```
 python3 twitter_bot_lgds.py
 ```

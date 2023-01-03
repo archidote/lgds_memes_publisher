@@ -30,10 +30,8 @@ jobs:
           key : ${{ secrets.SSH_PRIVATE_KEY }} # copy and paste a private key to a github secret of your current repo
           known_hosts : ${{ secrets.SSH_KNOW_HOST }} # optional, but add at the beggining of your line : ssh -o StrictHostKeyChecking=no user@x.x.x.x
           if_key_exists: ignore
-      - name : Pull
+      - name : Pull and re up the bot 
         run : | 
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
-          tmux kill-session -t twitter_bot_lgds
-          cd /home/${{ secrets.USERNAME }}/twitter_bot_lgds
-          git pull origin main
-          echo 'Due to an unexpected issue from the runner, The bot will automatically be raised up in the next 5min in a python venv by my monitoring script' '
+          echo test
+          tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'source activate_virtual_env.sh''

@@ -18,6 +18,7 @@ schedule.every(12).hours.do(lambda: bot_retweet())
 # schedule.every(5).seconds.do(lambda: detect_twitter_mention())
 
 def start() : 
+    logging.info("The bot is starting...")   
     while 1:
         schedule.run_pending()
         time.sleep(1)
@@ -28,6 +29,6 @@ if __name__ == "__main__":
     try:
         start()
     except Exception as e :
-        logging.error('Fatal error'+str(e)+"")
+        logging.error('Fatal error : '+str(e)+"")
     
     

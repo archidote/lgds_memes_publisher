@@ -30,3 +30,9 @@ def every_1st_day_of_the_month_or_not():
         most_famous_tweet_of_the_previous_month("retweet")
     else : 
         logging.info("Today we are not the 1st || 2st day of the month ("+str(day_of_month)+"), so no scheduled actions will be executed.")
+
+def detect_if_website_is_down() :
+    return 
+
+def is_meme_base_is_updated(): 
+    return
