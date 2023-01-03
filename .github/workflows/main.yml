@@ -31,7 +31,6 @@ jobs:
           known_hosts : ${{ secrets.SSH_KNOW_HOST }} # optional, but add at the beggining of your line : ssh -o StrictHostKeyChecking=no user@x.x.x.x
           if_key_exists: ignore
       - name : Pull and re up the bot 
-        run : | 
-          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
-          echo test
-          tmux new-session -d -s twitter_bot_lgds -c /home/geoffrey/twitter_bot_lgds 'source activate_virtual_env.sh''
+        run : |
+          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} "tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'source activate_virtual_env.sh'"
+        shell: bash 
