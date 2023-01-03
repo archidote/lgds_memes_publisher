@@ -32,4 +32,9 @@ jobs:
           if_key_exists: ignore
       - name : Pull and re up the bot 
         run : |
+          ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
+          tmux kill-session -t twitter_bot_lgds
+          cd /home/${{ secrets.USERNAME }}/twitter_bot_lgds
+          git pull origin main'
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} "tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'source activate_virtual_env.sh'"
+        # First kill the previous tmux session, pull the new code, exit() and reup the bot from a other ssh session. (otherwise --> error)
