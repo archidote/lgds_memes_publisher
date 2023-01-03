@@ -34,4 +34,4 @@ jobs:
         run : | 
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} '
           echo test
-          tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'source activate_virtual_env.sh''
+          tmux new-session -d -s twitter_bot_lgds -c /home/geoffrey/twitter_bot_lgds 'source activate_virtual_env.sh''
