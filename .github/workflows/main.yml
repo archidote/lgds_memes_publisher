@@ -33,4 +33,3 @@ jobs:
       - name : Pull and re up the bot 
         run : |
           ssh -p 4242 ${{ secrets.USERNAME }}@${{ secrets.IP }} "tmux new-session -d -s twitter_bot_lgds -c /home/${{ secrets.USERNAME }}/twitter_bot_lgds 'source activate_virtual_env.sh'"
-        shell: bash 

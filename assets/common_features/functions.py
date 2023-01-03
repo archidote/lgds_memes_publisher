@@ -22,7 +22,7 @@ def every_1st_day_of_the_month_or_not():
     
     day_of_month = datetime.now().day
     
-    if (day_of_month == 1) :
+    if (day_of_month == 3) :
         logging.info("First day of the month - Calling most_famous_tweet_of_the_previous_month(\"favorite\")...")
         most_famous_tweet_of_the_previous_month("favorite")    
     elif (day_of_month == 2) :

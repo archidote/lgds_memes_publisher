@@ -8,7 +8,7 @@ from assets.bot_actions.reply import *
 
 
 schedule.every().days.at("07:00").do(lambda: meme_source_and_publish())
-schedule.every().days.at("17:30").do(lambda: every_1st_day_of_the_month_or_not())
+schedule.every().days.at("11:32").do(lambda: every_1st_day_of_the_month_or_not())
 schedule.every(2).days.at("18:00").do(lambda: quote_publisher())
 schedule.every(15).to(59).seconds.do(lambda: detect_twitter_mention())
 schedule.every(12).hours.do(lambda: bot_retweet())
