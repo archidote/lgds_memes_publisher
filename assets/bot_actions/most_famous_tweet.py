@@ -21,6 +21,7 @@ def most_famous_tweet_of_the_previous_month(choice) : # favorite || retweet
             date_trantyped = datetime.strptime(status._json["created_at"], '%a %b %d %H:%M:%S %z %Y')
             if date_trantyped.month == previous_month : 
                 array.append([status._json[choice+"_count"], "https://twitter.com/"+twitter_user_account+"/status/"+status._json["id_str"]+""])   
+        
         most_famous_tweet = max(array)
         tweet = "À ne pas manquer - Le tweet le plus "+fr_to_en[choice]+" ("+str(most_famous_tweet[0])+" fois) du mois précédent  :\n"+most_famous_tweet[1]+bot_end_message
             
@@ -28,6 +29,5 @@ def most_famous_tweet_of_the_previous_month(choice) : # favorite || retweet
         logging.info("The most "+choice+" tweet of the previous month has been republished with a formal message succefully. (tweet id : "+most_famous_tweet[1]+")")
         
     except (RuntimeError, TypeError, NameError, Exception) as e :
-        
         logging.error("Fatal error : "+e+"")
 

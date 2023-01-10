@@ -3,11 +3,10 @@ from assets.bot_actions.most_famous_tweet import *
 
 def detect_control_c_signal_handler(sig, frame):
     
-    checking = input("Ctrl-c was pressed. Do you really want to exit ? ("+bot_name+" paused) - [y/n] ")
+    checking = input(f'''Ctrl-c was pressed. Do you really want to exit ? ({bot_name} paused) - [y/n] ''')
     
     if checking == "y":
-        print ("")
-        logging.info(bot_name+" has been stopped manually")    
+        logging.info(f'''{bot_name} has been stopped manually''')    
         return sys.exit(0)
     else:
         return ""  
@@ -27,7 +26,7 @@ def iterate_over_a_the_first_case_of_a_double_list(_list) :
     for l in _list: 
         if l[0] == "/hello" : 
             break
-        _return += ""+l[0]+"\n"
+        _return += l[0]+"\n"
         
     return _return
     
@@ -42,7 +41,7 @@ def every_x_day_of_the_month_or_not():
         logging.info("First day of the month - Calling most_famous_tweet_of_the_previous_month(\"retweet\")...")
         most_famous_tweet_of_the_previous_month("retweet")
     else : 
-        logging.info("Today we are not the 1st || 2st day of the month ("+str(day_of_month)+"), so no scheduled actions will be executed.")
+        logging.info(f'''Today we are not the 1st || 2st day of the month ({str(day_of_month)}, so no scheduled actions will be executed.)''')
 
 def detect_if_website_is_down() :
     return 

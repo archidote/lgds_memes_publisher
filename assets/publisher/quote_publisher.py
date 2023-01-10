@@ -26,13 +26,11 @@ def quote_publisher():
             
         record = cursor.fetchall()
         sqliteConnection.commit()
-        
         quote = record[0][1] 
-        # source = record[0][2]
-        
         tweet = "“"+quote+"”"+bot_end_message
+        
         api.update_status(status=tweet)
         logging.info("I have tweeted a quote")
     except Exception as e : 
-        logging.error('Quote publishing : Fatal error'+e+"")
+        logging.error("Quote publishing : Fatal error"+e+"")
     
