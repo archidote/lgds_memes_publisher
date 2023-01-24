@@ -21,7 +21,7 @@ def lgds_memes_base (url='https://le-guide-du-secops.fr/lgds_memes_base/', ext='
     
     with open('assets/common_features/tmp_local_meme.png', 'wb') as handler:
         handler.write(img_data)
-        logging.info(f'New meme from lgds memes base has been downloaded ({index_of_memes_png_list[n]})')
+        logging.info(f'New meme from lgds memes base has been downloaded  locally ({index_of_memes_png_list[n]})')
 
 def meme_from_reddit(): 
     
