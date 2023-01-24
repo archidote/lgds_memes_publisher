@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 # From - Other dependencies not used directly in this file but by others used by the project 
 from urllib import request
 from bs4 import BeautifulSoup
-from datetime import datetime
 from random import randrange
+from datetime import datetime
 
 load_dotenv()
 
@@ -78,3 +78,4 @@ http_request_session.mount('http://', HTTPAdapter(max_retries=retries))
 bot_name = "twitter_bot_lgds"
 bot_end_message = "\n\nFrom LGDS bot 🤖 with ❤️ \n"
 twitter_user_account="LeGuideDuSecOps"
+today = datetime.now()
