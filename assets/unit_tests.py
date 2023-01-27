@@ -9,6 +9,7 @@ from time import sleep
 
 
 core_functions = {
+    
         0 : lgds_memes_base,
         1 : count_meme_lgds_base,
         2 : every_x_day_of_the_month_or_not,
