@@ -32,7 +32,7 @@ def detect_twitter_mention () :
                         if word[0] in mention.text :
                             message = word[1]
                             if word[0] == "/meme" : 
-                                meme_publisher(bot_anwser=True)
+                                meme_publisher()
                                 media = api.media_upload("assets/common_features/tmp_local_meme.png") 
                                 api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str, media_ids=[media.media_id])
                                 logging.info('a meme has been fetched and published in the reply of the following tweet : '+str(mention.id))

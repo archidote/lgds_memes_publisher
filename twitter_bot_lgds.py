@@ -28,5 +28,5 @@ if __name__ == "__main__":
             time.sleep(1)
             signal.signal(signal.SIGINT, detect_control_c_signal_handler)
     except Exception as e :
-        logging.error("Fatal error : "+e+"")    
+        logging.error("Fatal error : "+str(e)+"")    
     
