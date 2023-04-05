@@ -27,7 +27,8 @@ def quote_publisher():
         record = cursor.fetchall()
         sqliteConnection.commit()
         quote = record[0][1] 
-        tweet = "“"+quote+"”"+bot_end_message
+        source = record[0][2]
+        tweet = "“"+quote+"” \n\nCitation de : "+source+""+bot_end_message
         
         api.update_status(status=tweet)
         logging.info("I have tweeted a quote")
